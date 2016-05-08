@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "start": "npm run babel & live-server",
+    "build": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "postinstall": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash"
   },
