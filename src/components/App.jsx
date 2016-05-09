@@ -5,12 +5,13 @@ class App extends React.Component {
 
     this.state = {
       currentVideo: null,
-      videos: []
+      videos: [],
+      query: null
     };
   }
 
   componentDidMount() {
-    this.getYouTubeVideos('ufc');
+    this.getYouTubeVideos(this.state.query);
   }
 
   getYouTubeVideos(query) {
@@ -33,10 +34,17 @@ class App extends React.Component {
     });
   }
 
+  handleSearchInput() {
+    this.setState({
+      query: $('.form-control').val()
+    });
+    this.getYouTubeVideos(this.state.query);
+  }
+
   render() {
     return (
       <div>
-        <Nav />
+        <Nav handleSearchInput={this.handleSearchInput.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
